@@ -1,0 +1,22 @@
+h1 {
+  font-weight: 900;
+  font-size: 60px;
+}
+
+.bug a {
+  display: block;
+  padding: 10px;
+  border: 1px solid #ccc;
+  margin: 0 0 10px 0;
+  text-decoration: none;
+  color: black;
+}
+.bug a:hover {
+  background: #eee;
+}
+.bug a span {
+  margin: 0 2px;
+}
+.bug a span:first-child {
+  font-weight: 900;
+}
