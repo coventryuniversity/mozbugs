@@ -1,8 +1,22 @@
 {
   "name": "mozbugs",
   "version": "0.1.0",
+  "description": "Find Mozilla Bugs to work on.",
+  "main": "index.js",
+  "repository": "git@github.com:benjaminbogdanovic/mozbugs.git",
+  "homepage": "http://benjaminbogdanovic.github.io/mozbugs",
+  "author": "Philipp Beck <dertieran@gmail.com>",
+  "license": "MIT",
   "private": true,
+  "scripts": {
+    "start": "react-scripts start",
+    "build": "react-scripts build",
+    "test": "react-scripts test --env=jsdom",
+    "deploy": "gh-pages -d build",
+    "eject": "react-scripts eject"
+  },
   "devDependencies": {
+    "gh-pages": "^0.12.0",
     "react-scripts": "0.7.0"
   },
   "dependencies": {
@@ -11,11 +25,5 @@
     "qs": "^6.3.0",
     "react": "^15.4.0",
     "react-dom": "^15.4.0"
-  },
-  "scripts": {
-    "start": "react-scripts start",
-    "build": "react-scripts build",
-    "test": "react-scripts test --env=jsdom",
-    "eject": "react-scripts eject"
   }
 }
