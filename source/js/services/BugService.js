@@ -1,27 +1,31 @@
-import axios from 'axios';
-import { flow, sortBy, map, assign } from 'lodash/fp';
-import {stringify as stringifyParams} from 'qs';
+import {stringify as stringifyQuery} from 'qs';
 
+const BugService = {
+  makeRequest: query => {
+    const defaultQuery = {
+      f1: 'bug_mentor',
+      o1: 'isnotempty',
+      whiteboard_type: 'contains_all',
+      bug_status: ['NEW', 'ASSIGNED', 'REOPENED', 'UNCONFIRMED'],
+      include_fields: ['id', 'assigned_to', 'summary', 'last_change_time', 'component', 'whiteboard', 'status', 'severity']
+    }
 
-const getBugs = (product) => axios.get('/bug', {
-  baseURL: 'https://bugzilla.mozilla.org/rest',
-  params: {
-    f1: 'bug_mentor',
-    o1: 'isnotempty',
-    whiteboard_type: 'contains_all',
-    bug_status: ['NEW', 'ASSIGNED', 'REOPENED', 'UNCONFIRMED'],
-    include_fields: ['id', 'assigned_to', 'summary', 'last_change_time', 'component', 'whiteboard', 'status', 'severity'],
-    product: product
+    const queryString = stringifyQuery(Object.assign({}, defaultQuery, query), {arrayFormat: 'repeat'})
+
+    return fetch(`https://bugzilla.mozilla.org/rest/bug?${queryString}`)
+      .then(response => {
+        if (response.status >= 200 && response.status < 300) {
+          return response
+        } else {
+          var error = new Error(response.statusText)
+          error.response = response
+          throw error
+        }
+      })
+      .then(response => response.json())
+      .then(data => data.bugs)
   },
-  paramsSerializer: params => stringifyParams(params, {arrayFormat: 'repeat'})
-})
-.then(result => flow(
-  sortBy(bug => new Date(bug.last_change_time).getTime() * -1),
-  map(bug => assign(bug, {
-    last_change_time: new Date(bug.last_change_time).toDateString(),
-    link: `https://bugzilla.mozilla.org/show_bug.cgi?id=${bug.id}`
-  }))
-)(result.data.bugs))
+  buildLinkFromId: bugId => `https://bugzilla.mozilla.org/show_bug.cgi?id=${bugId}`
+}
 
-
-export default getBugs;
+export default BugService;

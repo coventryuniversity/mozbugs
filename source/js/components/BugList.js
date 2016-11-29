@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import getBugs from '../services/BugService';
+import BugService from '../services/BugService';
 import Bug from './Bug';
 
 class BugList extends Component {
@@ -11,15 +11,12 @@ class BugList extends Component {
   }
 
   componentDidMount() {
-    this.getBugs = getBugs('Firefox').then(bugs => {
+    BugService.makeRequest({ product: 'Firefox' })
+    .then(bugs => {
       this.setState({
         bugs: bugs
       });
     });
-  }
-
-  componentWillUnmount() {
-    this.getBugs.abort();
   }
 
   render() {
