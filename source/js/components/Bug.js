@@ -5,12 +5,10 @@ class Bug extends Component {
   render() {
     const bug = this.props.bug
     return (
-      <div className='bug'>
-        <a href={BugService.buildLinkFromId(bug.id)} target="_blank" >
-          <span>{bug.status}</span>
-          <span>{bug.summary}</span>
-        </a>
-      </div>
+      <a className='bug' href={BugService.buildLinkFromId(bug.id)} target="_blank" >
+        <span className="bug-status">{bug.status}</span>
+        <span className="bug-summary">{bug.summary}</span>
+      </a>
     );
   }
 }

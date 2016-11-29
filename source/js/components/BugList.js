@@ -23,7 +23,7 @@ class BugList extends Component {
     const bugs = this.state.bugs
     return (
       <div className="bug-list">
-        {bugs.length > 0 ? bugs.map(bug => <Bug bug={bug} key={bug.id}/>) : <i className="fa fa-spinner fa-pulse fa-3x fa-fw"/>}
+        {bugs.length > 0 ? bugs.map(bug => <Bug bug={bug} key={bug.id}/>) : <i className="fa fa-spinner fa-pulse fa-3x fa-fw bug-list-spinner"/>}
       </div>
     );
   }

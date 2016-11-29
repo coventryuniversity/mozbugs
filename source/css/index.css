@@ -1,40 +1,53 @@
-@import url(https://fonts.googleapis.com/css?family=Roboto:400,900);
-@import url(https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css);
+@import url('https://fonts.googleapis.com/css?family=Roboto');
+@import url('https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css');
+
+:root {
+  --moz-red: #f24b00;
+}
 
 body {
   font-family: 'Roboto', sans-serif;
   padding: 20px;
 }
 
-h1 {
-  font-weight: 900;
-  font-size: 60px;
-  text-align: center;
-}
-h1 .fa-bug {
-  color: #f24b00;
+.app {
+  & .app-title {
+    font-weight: 900;
+    font-size: 60px;
+    text-align: center;
+  }
+
+  & .app-icon {
+    color: var(--moz-red);
+  }
 }
 
-.bug-list > i {
+.bug-list {
+  & .bug-list-spinner {
     display: inline-block;
     width: 100%;
     text-align:center;
+  }
 }
 
-.bug a {
+.bug {
   display: block;
   padding: 10px;
   border: 1px solid #ccc;
   margin: 0 0 10px 0;
   text-decoration: none;
   color: black;
-}
-.bug a:hover {
-  background: #eee;
-}
-.bug a span {
-  margin: 0 2px;
-}
-.bug a span:first-child {
-  font-weight: 900;
+
+  &:hover {
+    background: #eee;
+  }
+
+  & .bug-status,
+  & .bug-summary {
+    margin: 0 2px;
+  }
+
+  & .bug-status {
+    font-weight: 900;
+  }
 }
