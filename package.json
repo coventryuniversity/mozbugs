@@ -11,14 +11,12 @@
   "scripts": {
     "start": "node scripts/start.js",
     "build": "node scripts/build.js",
-    "test": "node scripts/test.js --env=jsdom",
     "deploy": "gh-pages -d build"
   },
   "devDependencies": {
     "autoprefixer": "6.5.1",
     "babel-core": "6.17.0",
     "babel-eslint": "7.0.0",
-    "babel-jest": "16.0.0",
     "babel-loader": "6.2.5",
     "babel-preset-react-app": "^1.0.0",
     "case-sensitive-paths-webpack-plugin": "1.1.4",
@@ -44,7 +42,6 @@
     "gzip-size": "3.0.0",
     "html-webpack-plugin": "2.24.0",
     "http-proxy-middleware": "0.17.2",
-    "jest": "16.0.2",
     "json-loader": "0.5.4",
     "object-assign": "4.1.0",
     "path-exists": "2.1.0",
@@ -68,24 +65,6 @@
     "qs": "^6.3.0",
     "react": "^15.4.0",
     "react-dom": "^15.4.0"
-  },
-  "jest": {
-    "moduleFileExtensions": [
-      "jsx",
-      "js",
-      "json"
-    ],
-    "moduleNameMapper": {
-      "^.+\\.(jpg|jpeg|png|gif|eot|otf|webp|svg|ttf|woff|woff2|mp4|webm|wav|mp3|m4a|aac|oga)$": "<rootDir>\\config\\jest\\FileStub.js",
-      "^.+\\.css$": "<rootDir>\\config\\jest\\CSSStub.js"
-    },
-    "setupFiles": [
-      "<rootDir>\\config\\polyfills.js"
-    ],
-    "testPathIgnorePatterns": [
-      "<rootDir>/(build|docs|node_modules)/"
-    ],
-    "testEnvironment": "node"
   },
   "babel": {
     "presets": [

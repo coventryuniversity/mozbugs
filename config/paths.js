@@ -17,7 +17,6 @@ function resolveApp(relativePath) {
 
 // We will export `nodePaths` as an array of absolute paths.
 // It will then be used by Webpack configs.
-// Jest doesn’t need this because it already handles `NODE_PATH` out of the box.
 
 var nodePaths = (process.env.NODE_PATH || '')
   .split(process.platform === 'win32' ? ';' : ':')
@@ -32,7 +31,6 @@ module.exports = {
   appIndexJs: resolveApp('source/js/index.js'),
   appPackageJson: resolveApp('package.json'),
   appSrc: resolveApp('source/js'),
-  testsSetup: resolveApp('source/setupTests.js'),
   appNodeModules: resolveApp('node_modules'),
   ownNodeModules: resolveApp('node_modules'),
   nodePaths: nodePaths
@@ -49,7 +47,6 @@ if (__dirname.indexOf(path.join('packages', 'react-scripts', 'config')) !== -1) 
     appIndexJs: resolveOwn('../template/source/js/index.js'),
     appPackageJson: resolveOwn('../package.json'),
     appSrc: resolveOwn('../template/source/js'),
-    testsSetup: resolveOwn('../template/source/setupTests.js'),
     appNodeModules: resolveOwn('../node_modules'),
     ownNodeModules: resolveOwn('../node_modules'),
     nodePaths: nodePaths
