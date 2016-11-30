@@ -7,7 +7,6 @@
 
 body {
   font-family: 'Roboto', sans-serif;
-  padding: 20px;
 }
 
 .app {
@@ -15,19 +14,35 @@ body {
     font-weight: 900;
     font-size: 60px;
     text-align: center;
+    margin: 10px;
+
+    & .app-title-icon {
+      color: var(--moz-red);
+    }
   }
 
-  & .app-icon {
-    color: var(--moz-red);
+  & .app-container {
+    display: flex;
+    flex-direction: row;
+    padding: 20px;
   }
 }
 
-.bug-list {
-  & .bug-list-spinner {
-    display: inline-block;
-    width: 100%;
-    text-align:center;
+.filter-group {
+  margin: 5px;
+
+  & .filter-group-label {
+    font-weight: bold;
   }
+}
+
+.filter-checkbox {
+  margin: 2px 0;
+}
+
+.bug-container {
+  flex-grow: 1;
+  padding: 0 5px;
 }
 
 .bug {

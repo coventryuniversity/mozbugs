@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import BugService from '../services/BugService';
+import BugService from '../../services/BugService';
 
 class Bug extends Component {
   render() {
