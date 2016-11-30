@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import FilterContainer from './Filter/FilterContainer';
 import BugContainer from './Bugs/BugContainer';
 import Store from '../Store';
+import { FilterOptions } from '../Constants';
 
 class App extends Component {
   constructor() {
@@ -13,6 +14,10 @@ class App extends Component {
     }
   }
 
+  componentDidMount() {
+    // NOTE: This will trigger all Bugs to be loaded let's test this
+    Store.loadBugsByFilterOptions(Object.keys(FilterOptions))
+  }
 
   onFilterChange(filterOptions) {
     this.setState({
