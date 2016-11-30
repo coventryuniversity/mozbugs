@@ -1,45 +1,34 @@
 import React, { Component } from 'react';
 import FilterContainer from './Filter/FilterContainer';
 import BugContainer from './Bugs/BugContainer';
-import BugService from '../services/BugService';
+import Store from '../Store';
 
 class App extends Component {
   constructor() {
     super()
-    this.currentFilterQuery = 'empty'
-    this.bugsByFilter = {
-      'empty' : []
-    }
     this.state = {
+      filterOptions: [],
       isLoading: false,
       bugs: []
     }
   }
 
-  onChange(filterQuery) {
+
+  onFilterChange(filterOptions) {
     this.setState({
+      filterOptions: filterOptions,
       isLoading: true
-    })
-
-    this.currentFilterQuery = filterQuery
-
-    if (this.bugsByFilter.hasOwnProperty(filterQuery)) {
-      this.setState({
-        isLoading: false,
-        bugs: this.bugsByFilter[filterQuery]
-      })
-    } else {
-      BugService.loadBugs(filterQuery)
-      .then(bugs => {
-        this.bugsByFilter[filterQuery] = bugs
-        if (this.currentFilterQuery === filterQuery) {
-          this.setState({
-            isLoading: false,
-            bugs: bugs
-          })
-        }
-      })
-    }
+    }, () =>
+    Store.loadBugsByFilterOptions(filterOptions)
+    .then(bugs => {
+      if (filterOptions.every(option => this.state.filterOptions.includes(option))) {
+        this.setState({
+          isLoading: false,
+          bugs: bugs
+        })
+      }
+      return bugs
+    }))
   }
 
   render() {
@@ -51,7 +40,7 @@ class App extends Component {
           <span className="app-title-text">Moz Bugs!</span>
         </div>
         <div className="app-container">
-          <FilterContainer onChange={this.onChange.bind(this)}/>
+          <FilterContainer onChange={this.onFilterChange.bind(this)}/>
           <BugContainer bugs={this.state.bugs}/>
         </div>
       </div>

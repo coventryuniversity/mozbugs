@@ -1,7 +1,6 @@
 import React, { Component } from 'react';
-import FilterService from '../../services/FilterService';
+import { FilterGroups } from '../../Constants';
 import FilterOption from './FilterOption';
-
 
 class FilterContainer extends Component {
   constructor() {
@@ -20,34 +19,20 @@ class FilterContainer extends Component {
     }
     this.setState({
       checkedOptions: checkedOptions
-    }, () => this.triggerChanges())
+    }, () => this.props.onChange(this.state.checkedOptions))
 
-  }
-
-  triggerChanges() {
-    let filterQuery = 'empty';
-
-    if (this.state.checkedOptions.length > 0) {
-      filterQuery = FilterService.buildQueryString(
-        this.state.checkedOptions
-        .map(key => FilterService.options[key].values)
-        .reduce((flat, value) => flat.concat(value), [])
-      )
-    }
-
-    this.props.onChange(filterQuery)
   }
 
   render() {
     return (
       <div className="filter-container">
-        {FilterService.groups.map((group, index) => (
+        {FilterGroups.map((group, index) => (
           <div className="filter-group" key={`filter-group-${index}`}>
             <label className="filter-group-label">{group.label}</label>
-            {group.options.map(key => <FilterOption
-              key={`filter-option-${key}`}
-              label={FilterService.options[key].label}
-              onChange={this.onChange.bind(this, key)}
+            {group.options.map(option => <FilterOption
+              key={`filter-option-${option.key}`}
+              label={option.label}
+              onChange={this.onChange.bind(this, option.key)}
             />)}
           </div>
         ))}
