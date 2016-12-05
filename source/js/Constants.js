@@ -1,5 +1,48 @@
 export const FilterGroups = [
   {
+    label: "Display only",
+    options: [
+      {
+        key: "unowned",
+        label: "Unassigned bugs"
+      }, {
+        key: "simple",
+        label: "Simple bugs"
+      }, {
+        key: "diamond",
+        label: "Diamond Bugs"
+      }
+    ]
+  }, {
+    label: "Languages",
+    options: [
+      {
+        key: "py",
+        label: "Python"
+      }, {
+        key: "java",
+        label: "Java"
+      }, {
+        key: "sh",
+        label: "Shell/Makefile/Autoconf"
+      }, {
+        key: "js",
+        label: "JavaScript"
+      }, {
+        key: "cpp",
+        label: "C/C++"
+      }, {
+        key: "html",
+        label: "HTML/CSS"
+      }, {
+        key: "xml",
+        label: "XML/XUL"
+      }, {
+        key: "perl",
+        label: "Perl"
+      }
+    ]
+  }, {
     label: "Web Platform",
     options: [
       {
@@ -130,49 +173,6 @@ export const FilterGroups = [
       }, {
         key: "webmaker",
         label: "Webmaker"
-      }
-    ]
-  }, {
-    label: "Do you know",
-    options: [
-      {
-        key: "py",
-        label: "Python"
-      }, {
-        key: "java",
-        label: "Java"
-      }, {
-        key: "sh",
-        label: "Shell/Makefile/Autoconf"
-      }, {
-        key: "js",
-        label: "JavaScript"
-      }, {
-        key: "cpp",
-        label: "C/C++"
-      }, {
-        key: "html",
-        label: "HTML/CSS"
-      }, {
-        key: "xml",
-        label: "XML/XUL"
-      }, {
-        key: "perl",
-        label: "Perl"
-      }
-    ]
-  }, {
-    label: "Display only",
-    options: [
-      {
-        key: "unowned",
-        label: "Unassigned bugs"
-      }, {
-        key: "simple",
-        label: "Simple bugs"
-      }, {
-        key: "diamond",
-        label: "Diamond Bugs"
       }
     ]
   }
@@ -514,8 +514,7 @@ export const FilterOptions = {
   jseng: [
     {
       component: [
-        "JavaScript Engine",
-        "JavaScript Engine: JIT",
+        "JavaScript Engine", "JavaScript Engine: JIT",
         /*eslint-disable */
         // NOTE: We ignore http://eslint.org/docs/rules/no-script-url here
         "JavaScript: GC",
