@@ -1,6 +1,5 @@
 import React, { Component } from 'react';
-import { FilterGroups } from '../../Constants';
-import FilterOption from './FilterOption';
+import { FilterGroups } from '../Constants';
 import Menu from 'antd/lib/menu';
 import Checkbox from 'antd/lib/checkbox';
 import 'antd/lib/menu/style/css';
@@ -35,8 +34,12 @@ class FilterContainer extends Component {
       >
         {FilterGroups.map((group, index) => (
           <Menu.SubMenu key={index} title={group.label}>
-            {group.options.map(option => 
-               <Menu.Item key={`menu-item-${option.key}`}><Checkbox value={option.key} onChange={this.onChange.bind(this)}>{option.label}</Checkbox></Menu.Item>
+            {group.options.map(option =>
+               <Menu.Item key={`menu-item-${option.key}`}>
+                 <Checkbox value={option.key} onChange={this.onChange.bind(this)}>
+                   {option.label}
+                 </Checkbox>
+               </Menu.Item>
             )}
           </Menu.SubMenu>
         ))}
