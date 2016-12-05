@@ -46,8 +46,8 @@ class App extends Component {
         </div>
         <div className="app-container">
           <FilterContainer onChange={this.onFilterChange.bind(this)}/>
-          {this.state.filterOptions.length === 0 ? <response>No options selected</response> :
-                    this.state.bugs.length === 0 ? <response>No matching bugs</response> :
+          {this.state.filterOptions.length === 0 ? <div className="response">No options selected</div> :
+                    this.state.bugs.length === 0 ? <div className="response">No matching bugs</div> :
                     <BugContainer bugs={this.state.bugs}/>}
         </div>
       </div>

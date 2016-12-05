@@ -40,11 +40,28 @@ body {
   margin: 2px 0;
 }
 
-.bug-container {
-  flex-grow: 1;
+.filter-container {
+  width: 25%;
   padding: 0 5px;
 }
 
+.bug-container {
+  width: 75%;
+  padding: 0 5px;
+}
+
+.bug .bug-status{
+    border-radius: 5px;
+    padding: 5px; 
+    color: white;
+    font-size: 13px;
+}
+.response{
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  font-size: 30px;
+}
 .bug {
   display: block;
   padding: 10px;
@@ -60,6 +77,7 @@ body {
   & .bug-status,
   & .bug-summary {
     margin: 0 2px;
+    line-height:1.6;
   }
 
   & .bug-status {

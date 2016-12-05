@@ -1,6 +1,10 @@
 import React, { Component } from 'react';
 import { FilterGroups } from '../../Constants';
 import FilterOption from './FilterOption';
+import Menu from 'antd/lib/menu';
+import Checkbox from 'antd/lib/checkbox';
+import 'antd/lib/menu/style/css';
+import 'antd/lib/checkbox/style/css';
 
 class FilterContainer extends Component {
   constructor() {
@@ -10,12 +14,13 @@ class FilterContainer extends Component {
     }
   }
 
-  onChange(key, checked) {
+  onChange(event) {
     let checkedOptions = this.state.checkedOptions;
+    const { value, checked} = event.target
     if (checked) {
-      checkedOptions = checkedOptions.concat([key]);
+      checkedOptions = checkedOptions.concat([value]);
     } else {
-      checkedOptions = checkedOptions.filter(oldKey => oldKey !== key);
+      checkedOptions = checkedOptions.filter(oldValue => oldValue !== value);
     }
     this.setState({
       checkedOptions: checkedOptions
@@ -25,18 +30,18 @@ class FilterContainer extends Component {
 
   render() {
     return (
-      <div className="filter-container">
+      <Menu
+        mode="inline"
+        style={{ width: 240 }}
+      >
         {FilterGroups.map((group, index) => (
-          <div className="filter-group" key={`filter-group-${index}`}>
-            <label className="filter-group-label">{group.label}</label>
-            {group.options.map(option => <FilterOption
-              key={`filter-option-${option.key}`}
-              label={option.label}
-              onChange={this.onChange.bind(this, option.key)}
-            />)}
-          </div>
+          <Menu.SubMenu key={index} title={group.label}>
+            {group.options.map(option => 
+               <Menu.Item key={`menu-item-${option.key}`}><Checkbox value={option.key} onChange={this.onChange.bind(this)}>{option.label}</Checkbox></Menu.Item>
+            )}
+          </Menu.SubMenu>
         ))}
-      </div>
+      </Menu>
     );
   }
 }
