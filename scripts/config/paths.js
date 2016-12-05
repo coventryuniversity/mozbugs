@@ -23,7 +23,6 @@ var nodePaths = (process.env.NODE_PATH || '')
   .filter(Boolean)
   .map(resolveApp);
 
-// config after eject: we're in ./config/
 module.exports = {
   appBuild: resolveApp('build'),
   appPublic: resolveApp('public'),
