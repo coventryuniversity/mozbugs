@@ -32,7 +32,6 @@ class FilterContainer extends Component {
     return (
       <Menu
         mode="inline"
-        style={{ width: 240 }}
       >
         {FilterGroups.map((group, index) => (
           <Menu.SubMenu key={index} title={group.label}>

@@ -5,7 +5,7 @@ class Bug extends Component {
   render() {
     const bug = this.props.bug
     const statusStyle = bug.status === 'NEW' ? {backgroundColor:'green'} : 
-    					bug.status === 'ASSIGNED' ? {backgroundColor:'red'}:
+    					bug.status === 'ASSIGNED' ? {backgroundColor:'#C13832'}:
     					bug.status === 'REOPENED' ? {backgroundColor:'orange'}:
     					bug.status === 'UNCONFIRMED' ? {backgroundColor:'black'}:{}
     return (

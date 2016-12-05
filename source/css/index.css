@@ -2,11 +2,14 @@
 @import url('https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css');
 
 :root {
-  --moz-red: #f24b00;
+  --moz-red: #C13832;
+  --moz-charcole: #4D4E53;
+  --moz-sand: #D7D3C8;
 }
 
 body {
   font-family: 'Roboto', sans-serif;
+  color: var(--moz-charcole);
 }
 
 .app {
@@ -24,7 +27,7 @@ body {
   & .app-container {
     display: flex;
     flex-direction: row;
-    padding: 20px;
+    padding: 20px 20px 20px 0px;
   }
 }
 
@@ -47,14 +50,14 @@ body {
 
 .bug-container {
   width: 75%;
-  padding: 0 5px;
+  padding: 0px 0px 0px 20px;
 }
 
 .bug .bug-status{
     border-radius: 5px;
     padding: 5px; 
     color: white;
-    font-size: 13px;
+    font-size: 12px;
 }
 .response{
   position: absolute;
@@ -72,15 +75,46 @@ body {
 
   &:hover {
     background: #eee;
+    color: inherit;
   }
 
   & .bug-status,
   & .bug-summary {
-    margin: 0 2px;
-    line-height:1.6;
+    margin: 0 4px;
+  }
+
+  & .bug-summary {
+  line-height:1.6;
+  font-size: 13px;
   }
 
   & .bug-status {
     font-weight: 900;
   }
+}
+.ant-menu-inline .ant-menu-selected, .ant-menu-inline .ant-menu-item-selected{
+  border-right: 0;
+}
+
+.ant-menu-item-selected{
+  color: var(--moz-charcole);
+}
+ul.ant-menu.ant-menu-inline.ant-menu-light.ant-menu-root{
+  width: 0;
+}
+.ant-menu-inline, .ant-menu-vertical{
+  border-right: 1px solid #ccc;
+}
+.ant-menu-inline .ant-menu-item, .ant-menu-vertical .ant-menu-item{
+  border-right: 1px solid #ccc;
+}
+ul.ant-menu.ant-menu-inline.ant-menu-light.ant-menu-root{
+  width: 25%;
+}
+.ant-menu-vertical > .ant-menu-item, .ant-menu-inline > .ant-menu-item, .ant-menu-item-group-list > .ant-menu-item, .ant-menu-vertical > .ant-menu-submenu > .ant-menu-submenu-title, .ant-menu-inline > .ant-menu-submenu > .ant-menu-submenu-title, .ant-menu-item-group-list > .ant-menu-submenu > .ant-menu-submenu-title{
+  font-size: 14px;
+}
+.ant-checkbox-wrapper{
+  font-size: 14px;
+  width: 100%;
 }
