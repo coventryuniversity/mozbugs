@@ -1,6 +1,5 @@
 @import url('https://fonts.googleapis.com/css?family=Roboto');
 @import url('https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css');
-
 :root {
   --moz-red: #C13832;
   --moz-charcole: #4D4E53;
@@ -18,12 +17,10 @@ body {
     font-size: 60px;
     text-align: center;
     margin: 10px;
-
     & .app-title-icon {
       color: var(--moz-red);
     }
   }
-
   & .app-container {
     display: flex;
     flex-direction: row;
@@ -33,7 +30,6 @@ body {
 
 .filter-group {
   margin: 5px;
-
   & .filter-group-label {
     font-weight: bold;
   }
@@ -53,68 +49,64 @@ body {
   padding: 0px 0px 0px 20px;
 }
 
-.bug .bug-status{
-    border-radius: 5px;
-    padding: 5px; 
-    color: white;
-    font-size: 12px;
+.bug .bug-status {
+  border-radius: 5px;
+  padding: 5px;
+  color: white;
+  font-size: 12px;
 }
-.response{
+
+.response {
   position: absolute;
   top: 50%;
   left: 50%;
   font-size: 30px;
 }
-.bug {
-  display: block;
-  padding: 10px;
-  border: 1px solid #ccc;
-  margin: 0 0 10px 0;
-  text-decoration: none;
-  color: black;
 
+.bug {
+  margin: 0 10px;
+  color: inherit;
+  text-decoration: none;
   &:hover {
-    background: #eee;
     color: inherit;
   }
-
-  & .bug-status,
-  & .bug-summary {
-    margin: 0 4px;
-  }
-
-  & .bug-summary {
-  line-height:1.6;
-  font-size: 13px;
-  }
-
-  & .bug-status {
-    font-weight: 900;
-  }
 }
-.ant-menu-inline .ant-menu-selected, .ant-menu-inline .ant-menu-item-selected{
+
+.ant-menu-inline .ant-menu-selected, .ant-menu-inline .ant-menu-item-selected {
   border-right: 0;
 }
 
-.ant-menu-item-selected{
+.ant-menu-item-selected {
   color: var(--moz-charcole);
 }
-ul.ant-menu.ant-menu-inline.ant-menu-light.ant-menu-root{
+
+ul.ant-menu.ant-menu-inline.ant-menu-light.ant-menu-root {
   width: 0;
 }
-.ant-menu-inline, .ant-menu-vertical{
+
+.ant-menu-inline, .ant-menu-vertical {
   border-right: 1px solid #ccc;
 }
-.ant-menu-inline .ant-menu-item, .ant-menu-vertical .ant-menu-item{
+
+.ant-menu-inline .ant-menu-item, .ant-menu-vertical .ant-menu-item {
   border-right: 1px solid #ccc;
 }
-ul.ant-menu.ant-menu-inline.ant-menu-light.ant-menu-root{
+
+ul.ant-menu.ant-menu-inline.ant-menu-light.ant-menu-root {
   width: 25%;
 }
-.ant-menu-vertical > .ant-menu-item, .ant-menu-inline > .ant-menu-item, .ant-menu-item-group-list > .ant-menu-item, .ant-menu-vertical > .ant-menu-submenu > .ant-menu-submenu-title, .ant-menu-inline > .ant-menu-submenu > .ant-menu-submenu-title, .ant-menu-item-group-list > .ant-menu-submenu > .ant-menu-submenu-title{
+
+.ant-menu-vertical>.ant-menu-item, .ant-menu-inline>.ant-menu-item, .ant-menu-item-group-list>.ant-menu-item, .ant-menu-vertical>.ant-menu-submenu>.ant-menu-submenu-title, .ant-menu-inline>.ant-menu-submenu>.ant-menu-submenu-title, .ant-menu-item-group-list>.ant-menu-submenu>.ant-menu-submenu-title {
   font-size: 14px;
 }
-.ant-checkbox-wrapper{
+
+.ant-checkbox-wrapper {
   font-size: 14px;
   width: 100%;
 }
+
+
+/*.ant-card-extra {
+    right: 10px;
+    top: 10px;
+}*/
