@@ -1,59 +1,61 @@
 @import url('https://fonts.googleapis.com/css?family=Roboto');
 @import url('https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css');
+
 :root {
   --moz-red: #C13832;
   --moz-charcole: #4D4E53;
   --moz-sand: #D7D3C8;
+  --appbar-height: 65px;
+  --sidebar-width: 300px;
 }
 
-body {
-  font-family: 'Roboto', sans-serif;
+body, html {
+  min-height: 100%;
+  width: 100%;
+  height: 100%;
+  margin: 0;
+  padding: 0;
+  font-family: "Roboto", sans-serif;;
   color: var(--moz-charcole);
 }
 
-.app {
-  & .app-title {
-    font-weight: 900;
-    font-size: 60px;
-    text-align: center;
-    margin: 10px;
-    & .app-title-icon {
-      color: var(--moz-red);
-    }
-  }
-  & .app-container {
-    display: flex;
-    flex-direction: row;
-    padding: 20px 20px 20px 0px;
-  }
-}
+.appbar {
+  background-color: white;
+  box-shadow: 0 1px 3px rgba(0, 0, 0,.06), 0 1px 2px rgba(0, 0, 0, .06);
+  height: var(--appbar-height);
+  position: fixed;
+  top: 0;
+  width: 100%;
+  z-index: 9;
+  padding: 0.45rem;
+  text-align: center;
+  font-size: 32px;
 
-.filter-group {
-  margin: 5px;
-  & .filter-group-label {
-    font-weight: bold;
+  & .appbar-icon {
+    color: var(--moz-red);
+    width: 4rem;
   }
 }
 
-.filter-checkbox {
-  margin: 2px 0;
+.sidebar {
+  box-shadow: 0 1px 6px rgba(0, 0, 0,.12), 0 1px 4px rgba(0, 0, 0, .12);
+  background-color: white;
+  display: block;
+  height: calc(100% - var(--appbar-height));
+  min-width: var(--sidebar-width);
+  max-width: var(--sidebar-width);
+  position: fixed;
+  overflow-y: auto;
+  overflow-x: hidden;
+  top: var(--appbar-height);
+  width: var(--sidebar-width);
+  z-index: 5;
 }
 
-.filter-container {
-  width: 25%;
-  padding: 0 5px;
-}
-
-.bug-container {
-  width: 75%;
-  padding: 0px 0px 0px 20px;
-}
-
-.bug .bug-status {
-  border-radius: 5px;
-  padding: 5px;
-  color: white;
-  font-size: 12px;
+.content {
+  padding: 1.25rem;
+  margin-left: var(--sidebar-width);
+  margin-top: var(--appbar-height);
 }
 
 .response {
@@ -72,39 +74,20 @@ body {
   }
 }
 
-.ant-menu-inline .ant-menu-selected, .ant-menu-inline .ant-menu-item-selected {
-  border-right: 0;
+.ant-menu-inline,
+.ant-menu-inline .ant-menu-item,
+.ant-menu-inline .ant-menu-selected,
+.ant-menu-inline .ant-menu-item-selected {
+  border-right: none;
 }
 
 .ant-menu-item-selected {
   color: var(--moz-charcole);
 }
 
-ul.ant-menu.ant-menu-inline.ant-menu-light.ant-menu-root {
-  width: 0;
-}
-
-.ant-menu-inline, .ant-menu-vertical {
-  border-right: 1px solid #ccc;
-}
-
-.ant-menu-inline .ant-menu-item, .ant-menu-vertical .ant-menu-item {
-  border-right: 1px solid #ccc;
-}
-
-ul.ant-menu.ant-menu-inline.ant-menu-light.ant-menu-root {
-  width: 25%;
-}
-
-.ant-menu-vertical>.ant-menu-item, .ant-menu-inline>.ant-menu-item, .ant-menu-item-group-list>.ant-menu-item, .ant-menu-vertical>.ant-menu-submenu>.ant-menu-submenu-title, .ant-menu-inline>.ant-menu-submenu>.ant-menu-submenu-title, .ant-menu-item-group-list>.ant-menu-submenu>.ant-menu-submenu-title {
-  font-size: 14px;
-}
-
 .ant-checkbox-wrapper {
-  font-size: 14px;
   width: 100%;
 }
-
 
 /*.ant-card-extra {
     right: 10px;
