@@ -75,7 +75,7 @@ body, html {
 }
 
 .bug-container{
-  margin-top: height: var(--appbar-height);
+  margin-top: var(--appbar-height);
 }
 
 .ant-menu-inline,
