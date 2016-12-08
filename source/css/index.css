@@ -84,6 +84,10 @@ body, html {
   border-right: none;
 }
 
+.ant-card-head {
+  padding: 0 50px 0 24px;
+}
+
 .ant-menu-item-selected {
   color: var(--moz-charcole);
 }
@@ -92,7 +96,7 @@ body, html {
   width: 100%;
 }
 
-/*.ant-card-extra {
+.ant-card-extra {
     right: 10px;
     top: 10px;
-}*/
+}
