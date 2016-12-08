@@ -33,7 +33,7 @@ body, html {
 
   & .appbar-icon {
     color: var(--moz-red);
-    width: 4rem;
+    padding-right: 10px;
   }
 }
 
