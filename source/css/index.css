@@ -55,7 +55,6 @@ body, html {
 .content {
   padding: 0 1.25rem 1.25rem 1.25rem;
   margin-left: var(--sidebar-width);
-  margin-top: var(--appbar-height);
 }
 
 .response {
