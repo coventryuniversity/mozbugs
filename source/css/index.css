@@ -33,7 +33,10 @@ body, html {
 
   & .appbar-icon {
     color: var(--moz-red);
-    width: 4rem;
+  }
+
+  & .appbar-title{
+    margin: 0 10px;
   }
 }
 
@@ -55,7 +58,8 @@ body, html {
     top: 50%;
     left: 50%;
     transform: translateX(-50%) translateY(-50%);
-    font-size: 22px;
+    font-size: 25px;
+    text-align: center;
 }
 
 .bug {

@@ -51,7 +51,7 @@ class App extends Component {
         <span id="menu" onClick={this.sideMenu}>&#9776;</span>
 
           <i className={`appbar-icon fa fa-fw ${appbarIcon}`}/>
-          <span className="appbar-title">Moz Bugs!</span>
+          <span className="appbar-title">Moz Bugs</span>
         </div>
         <div id="sidebar" className="sidebar">
           <Filter onChange={this.onFilterChange.bind(this)}/>
