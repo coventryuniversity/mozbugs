@@ -33,7 +33,7 @@ body, html {
 
   & .appbar-icon {
     color: var(--moz-red);
-    padding-right: 10px;
+    width: 4rem;
   }
 }
 
@@ -42,20 +42,32 @@ body, html {
   background-color: white;
   display: block;
   height: calc(100% - var(--appbar-height));
-  min-width: var(--sidebar-width);
-  max-width: var(--sidebar-width);
   position: fixed;
   overflow-y: auto;
   overflow-x: hidden;
   top: var(--appbar-height);
-  width: var(--sidebar-width);
+  width: 0;
   z-index: 5;
 }
 
+@media screen and (min-width: 480px) {
+  .sidebar {
+    width: var(--sidebar-width);
+  }
+  .bug-container{
+  margin-top: var(--appbar-height);
+}
 .content {
-  padding: 0 1.25rem 1.25rem 1.25rem;
   margin-left: var(--sidebar-width);
 }
+#menu{
+  display: none;
+}
+}
+.content {
+  padding: 0 1.25rem 1.25rem 1.25rem;
+}
+
 
 .response {
   position: absolute;
@@ -90,6 +102,14 @@ body, html {
 
 .ant-checkbox-wrapper {
   width: 100%;
+}
+
+.ant-card-body{
+  padding: 10px 24px;
+}
+
+#menu{
+  float: left
 }
 
 /*.ant-card-extra {

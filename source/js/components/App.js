@@ -5,6 +5,7 @@ import Store from '../Store';
 import { FilterOptions } from '../Constants';
 import 'antd/lib/spin/style/css';
 
+
 class App extends Component {
   constructor() {
     super()
@@ -13,6 +14,11 @@ class App extends Component {
       isLoading: false,
       bugs: []
     }
+  }
+
+  sideMenu() {
+    var e = document.getElementById('sidebar');
+    e.style.width = ((e.style.width!="350px") ? "350px" : "0px");
   }
 
   componentDidMount() {
@@ -42,10 +48,12 @@ class App extends Component {
     return (
       <div>
         <div className="appbar">
+        <span id="menu" onClick={this.sideMenu}>&#9776;</span>
+
           <i className={`appbar-icon fa fa-fw ${appbarIcon}`}/>
           <span className="appbar-title">Moz Bugs!</span>
         </div>
-        <div className="sidebar">
+        <div id="sidebar" className="sidebar">
           <Filter onChange={this.onFilterChange.bind(this)}/>
         </div>
         <div className="content">
