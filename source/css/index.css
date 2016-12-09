@@ -27,7 +27,7 @@ body, html {
   top: 0;
   width: 100%;
   z-index: 9;
-  padding: 0.45rem;
+  padding: 0.45rem 1.25rem 0.45rem 1.25rem;
   text-align: center;
   font-size: 32px;
 
@@ -50,30 +50,12 @@ body, html {
   z-index: 5;
 }
 
-@media screen and (min-width: 480px) {
-  .sidebar {
-    width: var(--sidebar-width);
-  }
-  .bug-container{
-  margin-top: var(--appbar-height);
-}
-.content {
-  margin-left: var(--sidebar-width);
-}
-#menu{
-  display: none;
-}
-}
-.content {
-  padding: 0 1.25rem 1.25rem 1.25rem;
-}
-
-
 .response {
-  position: absolute;
-  top: 50%;
-  left: 50%;
-  font-size: 30px;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translateX(-50%) translateY(-50%);
+    font-size: 22px;
 }
 
 .bug {
@@ -109,9 +91,33 @@ body, html {
 }
 
 #menu{
-  float: left
+  float: left;
+  font-size: 35px;
+  position: absolute;
+  left: 1.25rem;
 }
 
+@media screen and (min-width: 700px) {
+  .sidebar {
+    width: var(--sidebar-width);
+  }
+  .bug-container{
+  margin-top: var(--appbar-height);
+  }
+  .content {
+    margin-left: var(--sidebar-width);
+  }
+  #menu{
+    display: none;
+  }
+  .response {
+    transform: none;
+    font-size: 32px;
+  }
+}
+.content {
+  padding: 0 1.25rem 1.25rem 1.25rem;
+}
 /*.ant-card-extra {
     right: 10px;
     top: 10px;

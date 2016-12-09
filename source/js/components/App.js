@@ -18,7 +18,7 @@ class App extends Component {
 
   sideMenu() {
     var e = document.getElementById('sidebar');
-    e.style.width = ((e.style.width!="350px") ? "350px" : "0px");
+    e.style.width = ((e.style.width!="100%") ? "100%" : "0px");
   }
 
   componentDidMount() {
