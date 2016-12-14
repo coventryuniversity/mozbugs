@@ -3,27 +3,47 @@ import Filter from './Filter';
 import BugContainer from './Bugs/BugContainer';
 import Store from '../Store';
 import { FilterOptions } from '../Constants';
-import 'antd/lib/spin/style/css';
+import Button from 'antd/lib/button';
+import 'antd/lib/button/style/css';
 
 
 class App extends Component {
   constructor() {
     super()
     this.state = {
+      sidebarOpen: false,
+      sidebarDocked: false,
       filterOptions: [],
       isLoading: false,
       bugs: []
     }
   }
 
-  sideMenu() {
-    var e = document.getElementById('sidebar');
-    e.style.width = ((e.style.width!="100%") ? "100%" : "0px");
+  componentWillMount() {
+    var mql = window.matchMedia(`(min-width: 800px)`);
+    mql.addListener(this.mediaQueryChanged.bind(this));
+    this.setState({ mql: mql, sidebarDocked: mql.matches });
   }
 
   componentDidMount() {
     // NOTE: This will trigger all Bugs to be loaded let's test this
     Store.loadBugsByFilterOptions(Object.keys(FilterOptions))
+  }
+
+  componentWillUnmount() {
+    this.state.mql.removeListener(this.mediaQueryChanged);
+  }
+
+  mediaQueryChanged() {
+    this.setState({
+      sidebarDocked: this.state.mql.matches
+    });
+  }
+
+  toggleSidebar() {
+    this.setState({
+      sidebarOpen: !this.state.sidebarOpen,
+    })
   }
 
   onFilterChange(filterOptions) {
@@ -45,15 +65,16 @@ class App extends Component {
 
   render() {
     const appbarIcon = this.state.isLoading ? 'fa-spinner fa-pulse' : 'fa-bug'
+    const sidebarClass = this.state.sidebarDocked ? 'sidebar-docked' :
+      this.state.sidebarOpen ? 'sidebar-open' : 'sidebar-closed'
     return (
-      <div>
+      <div className={sidebarClass}>
         <div className="appbar">
-        <span id="menu" onClick={this.sideMenu}>&#9776;</span>
-
+          <Button className="sidebar-toggle" type="ghost" icon={this.state.sidebarOpen ? 'menu-fold' : 'menu-unfold'} onClick={this.toggleSidebar.bind(this)} />
           <i className={`appbar-icon fa fa-fw ${appbarIcon}`}/>
           <span className="appbar-title">Moz Bugs</span>
         </div>
-        <div id="sidebar" className="sidebar">
+        <div className="sidebar">
           <Filter onChange={this.onFilterChange.bind(this)}/>
         </div>
         <div className="content">
