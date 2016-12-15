@@ -11,6 +11,9 @@ export const FilterGroups = [
       }, {
         key: "diamond",
         label: "Diamond Bugs"
+      }, {
+        key: "createdLast30",
+        label: "Bugs created in the last 30 days"
       }
     ]
   }, {
@@ -179,6 +182,11 @@ export const FilterGroups = [
 ]
 
 export const FilterOptions = {
+  createdLast30: [
+    {
+      creation_time: new Date(new Date().setDate(new Date().getDate() - 30))
+    }
+  ],
   a11y: [
     {
       component: ["Disability Access APIs"],
