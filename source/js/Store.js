@@ -1,5 +1,5 @@
 import intersectionBy from 'lodash/intersectionBy'
-import { FilterOptions } from './Constants';
+import { FilterOptions } from './Constants'
 import { RequestsBugs } from './Utils'
 
 const _BugsByFilterOption = {}
@@ -10,9 +10,9 @@ export default {
       if (_BugsByFilterOption.hasOwnProperty(key)) {
         return _BugsByFilterOption[key]
       }
-      return _BugsByFilterOption[key] = Promise.all(FilterOptions[key].map(query =>
-        RequestsBugs(query))
-      ).then(bugsPerRequest => bugsPerRequest.reduce((flat, bugs) => flat.concat(bugs), []))
+      _BugsByFilterOption[key] = Promise.all(FilterOptions[key].map(query => RequestsBugs(query)))
+        .then(bugsPerRequest => bugsPerRequest.reduce((flat, bugs) => flat.concat(bugs), []))
+      return _BugsByFilterOption[key]
     })
   ).then(bugsPerOption => intersectionBy(...bugsPerOption, 'id'))
-};
+}

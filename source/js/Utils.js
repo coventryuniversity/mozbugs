@@ -1,5 +1,5 @@
 import merge from 'lodash/merge'
-import {stringify as stringifyQuery} from 'qs';
+import {stringify as stringifyQuery} from 'qs'
 
 export const RequestsBugs = filterQuery => {
   const queryString = stringifyQuery(merge({
@@ -23,6 +23,6 @@ export const RequestsBugs = filterQuery => {
   .then(data => data.bugs)
 }
 
-export function buildBugzillaLink(bug) {
+export function buildBugzillaLink (bug) {
   return `https://bugzilla.mozilla.org/show_bug.cgi?id=${bug.id}`
 }
