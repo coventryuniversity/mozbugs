@@ -4,6 +4,10 @@ The aim of mozbugs is to help new Mozilla contributors find the best place to st
 
 The project was started as an assignment for the Open-Source Development module at [Coventry University](http://www.coventry.ac.uk), and was inspired by [Bugs Ahoy!](https://www.joshmatthews.net/bugsahoy/)
 
+## How to Use
+
+Using the sidebar, expand any of the categories, then select at least one of the sub-category checkboxes to see bugs that are tagged with that sub-category. You can select as many sub-categories as you like. Doing this will only show bugs that are tagged with all these categories. Once you find a bug you are interested in, click on it, and it will take you to Bugzilla@Mozilla to show you more details.
+
 ## Getting the Code
 Clone SSH:
 ```sh
