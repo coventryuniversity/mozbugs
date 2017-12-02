@@ -41,6 +41,6 @@ module.exports = {
     new HtmlWebpackPlugin({ template: 'index.html', }),
   ],
   performance: {
-    hints: 'warning'
+    hints: false
   }
 };
