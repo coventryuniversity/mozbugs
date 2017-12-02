@@ -10,19 +10,17 @@ class Store {
   bugs: any;
 
   constructor() {
-    this.bugs = {}
+    this.bugs = {};
   }
 
   async loadBugs(filterOptions) {
     let bugs = await Promise.all(filterOptions.map(async key => {
       // if bugs are already retrieved
-      if (this.bugs[key]) {
-        return this.bugs[key]
-      }
-      
+      if (this.bugs[key]) return this.bugs[key];
+
       // else, get the bugs
-      this.bugs[key] = this.getbugs(FilterOptions[key])
-      return this.bugs[key]
+      this.bugs[key] = this.getbugs(FilterOptions[key]);
+      return this.bugs[key];
     }))
 
     return intersectionBy(...bugs, 'id');
@@ -32,15 +30,15 @@ class Store {
    * @param filterOption single option from FilterOptions list.
    */
   async getbugs(filterOption) {
-    let bugs: Array<any> = await Promise.all(filterOption.map(query => this.request(query))) // do multiple request from filter option
+    let bugs: Array<any> = await Promise.all(filterOption.map(query => this.request(query))); // do multiple request from filter option
     return [].concat(...bugs);
   }
 
   request(filterQuery) {
-    let q = Object.assign(filterQuery, requestDefaults)
-    return bz.bugs.search(q)
+    let q = Object.assign(filterQuery, requestDefaults);
+    return bz.bugs.search(q);
   }
 }
 
-export const store = new Store()
+export const store = new Store();
 
