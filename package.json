@@ -1,6 +1,6 @@
 {
   "name": "mozbugs",
-  "version": "0.1.0",
+  "version": "0.2.0",
   "description": "Find Mozilla Bugs to work on.",
   "main": "index.js",
   "repository": "git@github.com:coventryuniversity/mozbugs.git",
