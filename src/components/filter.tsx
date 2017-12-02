@@ -1,21 +1,21 @@
-import React, { Component } from 'react'
+import * as React from 'react'
 import PropTypes from 'prop-types'
-import { FilterGroups } from '../Constants'
-import Menu from 'antd/lib/menu'
-import Checkbox from 'antd/lib/checkbox'
-import 'antd/lib/menu/style/css'
-import 'antd/lib/checkbox/style/css'
+import { FilterGroups } from '../constants'
+import { Menu } from 'antd';
+import { Checkbox } from 'antd';
 
-class FilterContainer extends Component {
-  constructor () {
-    super()
+import store from '../services/store'
+
+export class FilterContainer extends React.Component<any, any> {
+  constructor(props) {
+    super(props)
     this.state = {
       checkedOptions: []
     }
     this.onChange = this.onChange.bind(this)
   }
 
-  onChange (event) {
+  onChange(event) {
     let checkedOptions = this.state.checkedOptions
     const { value, checked } = event.target
     if (checked) {
@@ -28,11 +28,9 @@ class FilterContainer extends Component {
     }, () => this.props.onChange(this.state.checkedOptions))
   }
 
-  render () {
+  render() {
     return (
-      <Menu
-        mode='inline'
-      >
+      <Menu mode='inline'>
         {FilterGroups.map((group, index) => (
           <Menu.SubMenu key={index} title={group.label}>
             {group.options.map(option =>
@@ -48,8 +46,3 @@ class FilterContainer extends Component {
     )
   }
 }
-FilterContainer.propTypes = {
-  onChange: PropTypes.func.isRequired
-}
-
-export default FilterContainer
