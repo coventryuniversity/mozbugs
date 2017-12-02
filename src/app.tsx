@@ -1,17 +1,26 @@
-import react, { Component } from 'react';
-import Filter from './js/components/Filter'
-import BugContainer from './js/components/Bugs/BugContainer'
-import store from './js/Store';
-import { FilterOptions } from './js/constants'
-import Button from 'antd/lib/button'
-import 'antd/lib/button/style/css'
+import * as React from 'react';
+import { FilterContainer } from './components/Filter';
+import { BugContainer } from './components/Bugs/BugContainer';
+import { store } from './services/Store';
+import { FilterOptions } from './constants';
+import { Button } from 'antd';
 
+import 'antd/dist/antd.css';
 
-export class App extends Component {
-  constructor() {
+import './css/index.scss';
 
-    //@ts-ignore
-    super()
+type AppProps = {
+  sidebarOpen: true
+}
+type AppState = {
+  sidebarOpen: true
+}
+
+export class App extends React.Component<any, any> {
+  state: any;
+
+  constructor(props, state) {
+    super(props)
 
     this.state = {
       sidebarOpen: false,
@@ -26,6 +35,7 @@ export class App extends Component {
   }
 
   componentWillMount() {
+
     var mql = window.matchMedia(`(min-width: 800px)`)
     mql.addListener(this.mediaQueryChanged.bind(this))
     this.setState({ mql: mql, sidebarDocked: mql.matches })
@@ -67,13 +77,15 @@ export class App extends Component {
             }
             return bugs
           }))
+
+
   }
 
   render() {
     const appbarIcon = this.state.isLoading ? 'fa-spinner fa-pulse' : 'fa-bug'
     const sidebarClass = this.state.sidebarDocked ? 'sidebar-docked'
       : this.state.sidebarOpen ? 'sidebar-open' : 'sidebar-closed'
-      
+
     return (
       <div className={sidebarClass}>
         <div className='appbar'>
@@ -82,7 +94,7 @@ export class App extends Component {
           <span className='appbar-title'>Moz Bugs</span>
         </div>
         <div className='sidebar'>
-          <Filter onChange={this.onFilterChange} />
+          <FilterContainer onChange={this.onFilterChange} />
         </div>
         <div className='content'>
           {
@@ -96,4 +108,3 @@ export class App extends Component {
     )
   }
 }
-export default App

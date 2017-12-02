@@ -1,17 +1,19 @@
-import intersectionBy from 'lodash/intersectionBy'
-import bz from 'bzrest'
+import { intersectionBy } from 'lodash';
 
-import { FilterOptions, requestDefaults } from './constants'
+import bz from 'bzrest';
+
+import { FilterOptions, requestDefaults } from './constants';
+import { log } from 'util';
 
 /** Bug store */
 class Store {
   bugs: any;
 
-  constructor () {
+  constructor() {
     this.bugs = {}
   }
 
-  async loadBugs (filterOptions) {
+  async loadBugs(filterOptions) {
     let bugs = await Promise.all(filterOptions.map(async key => {
       // if bugs are already retrieved
       if (this.bugs[key]) { return this.bugs[key] }
@@ -20,25 +22,22 @@ class Store {
       return this.bugs[key]
     }))
 
-    // remove duplicates
-    return intersectionBy(...bugs, 'id')
+    return intersectionBy(...bugs, 'id');
   }
 
   /**
    * @param filterOption single option from FilterOptions list.
    */
-  async getbugs (filterOption) {
+  async getbugs(filterOption) {
     let bugs: Array<any> = await Promise.all(filterOption.map(query => this.request(query))) // do multiple request from filter option
-    bugs = [].concat(...bugs) // combine bug arrays to single array
-
-    return bugs
+    return [].concat(...bugs);
   }
 
-  request (filterQuery) {
+  request(filterQuery) {
     let q = Object.assign(filterQuery, requestDefaults)
     return bz.bugs.search(q)
   }
 }
 
-let store = new Store()
-export default store
+export const store = new Store()
+
