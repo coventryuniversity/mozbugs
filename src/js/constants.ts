@@ -1,3 +1,15 @@
+export const requestDefaults = {
+  status: ['NEW', 'ASSIGNED', 'REOPENED', 'UNCONFIRMED'],
+  include_fields: ['id', 'assigned_to', 'summary', 'last_change_time', 'component', 'whiteboard', 'status', 'severity']
+
+  // not sure
+  // whiteboard_type: 'contains_all',
+
+  // These are related to a has mentor check? needed?
+  // f1: 'bug_mentor',
+  // o1: 'isnotempty'
+}
+
 export const FilterGroups = [
   {
     label: 'Display only',
@@ -255,7 +267,8 @@ export const FilterOptions = {
         'Whining'
       ],
       product: 'Bugzilla'
-    }, {
+    },
+    {
       component: [
         'Administration',
         'API',
@@ -297,7 +310,7 @@ export const FilterOptions = {
   ],
   cpp: [
     {
-      status_whiteboard: 'lang=c++'
+      whiteboard: 'lang=c++'
     }
   ],
   devtools: [
@@ -324,7 +337,7 @@ export const FilterOptions = {
   ],
   diamond: [
     {
-      status_whiteboard: 'diamond'
+      whiteboard: 'diamond'
     }
   ],
   dom: [
@@ -397,9 +410,9 @@ export const FilterOptions = {
     {
       product: 'Developer Ecosystem'
     }, {
-      status_whiteboard: 'lang=html'
+      whiteboard: 'lang=html'
     }, {
-      status_whiteboard: 'lang=css'
+      whiteboard: 'lang=css'
     }
   ],
   instantbird: [
@@ -506,14 +519,14 @@ export const FilterOptions = {
       component: ['Android Sync'],
       product: 'Mozilla Services'
     }, {
-      status_whiteboard: 'lang=java]'
+      whiteboard: 'lang=java]'
     }
   ],
   js: [
     {
       product: 'Developer Ecosystem'
     }, {
-      status_whiteboard: 'lang=js'
+      whiteboard: 'lang=js'
     }, {
       component: ['Firefox Sync: Backend'],
       product: 'Mozilla Services'
@@ -648,7 +661,7 @@ export const FilterOptions = {
   ],
   py: [
     {
-      status_whiteboard: 'lang=py'
+      whiteboard: 'lang=py'
     }
   ],
   releng: [
@@ -671,7 +684,7 @@ export const FilterOptions = {
   ],
   sh: [
     {
-      status_whiteboard: 'lang=shell'
+      whiteboard: 'lang=shell'
     }, {
       component: ['Build Config'],
       product: 'Core'
@@ -682,7 +695,7 @@ export const FilterOptions = {
   ],
   simple: [
     {
-      status_whiteboard: 'good first bug'
+      whiteboard: 'good first bug'
     }, {
       keywords: 'good-first-bug'
     }
@@ -754,9 +767,9 @@ export const FilterOptions = {
   ],
   xml: [
     {
-      status_whiteboard: 'lang=xul'
+      whiteboard: 'lang=xul'
     }, {
-      status_whiteboard: 'lang=xml'
+      whiteboard: 'lang=xml'
     }
   ]
 }

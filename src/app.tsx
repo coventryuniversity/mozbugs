@@ -1,14 +1,18 @@
-import React, { Component } from 'react'
-import Filter from './Filter'
-import BugContainer from './Bugs/BugContainer'
-import Store from '../Store'
-import { FilterOptions } from '../Constants'
+import react, { Component } from 'react';
+import Filter from './js/components/Filter'
+import BugContainer from './js/components/Bugs/BugContainer'
+import store from './js/Store';
+import { FilterOptions } from './js/constants'
 import Button from 'antd/lib/button'
 import 'antd/lib/button/style/css'
 
-class App extends Component {
-  constructor () {
+
+export class App extends Component {
+  constructor() {
+
+    //@ts-ignore
     super()
+
     this.state = {
       sidebarOpen: false,
       sidebarDocked: false,
@@ -16,58 +20,60 @@ class App extends Component {
       isLoading: false,
       bugs: []
     }
+
     this.toggleSidebar = this.toggleSidebar.bind(this)
     this.onFilterChange = this.onFilterChange.bind(this)
   }
 
-  componentWillMount () {
+  componentWillMount() {
     var mql = window.matchMedia(`(min-width: 800px)`)
     mql.addListener(this.mediaQueryChanged.bind(this))
     this.setState({ mql: mql, sidebarDocked: mql.matches })
   }
 
-  componentDidMount () {
+  componentDidMount() {
     // NOTE: This will trigger all Bugs to be loaded let's test this
-    Store.loadBugsByFilterOptions(Object.keys(FilterOptions))
+    store.loadBugs(Object.keys(FilterOptions))
   }
 
-  componentWillUnmount () {
+  componentWillUnmount() {
     this.state.mql.removeListener(this.mediaQueryChanged)
   }
 
-  mediaQueryChanged () {
+  mediaQueryChanged() {
     this.setState({
       sidebarDocked: this.state.mql.matches
     })
   }
 
-  toggleSidebar () {
+  toggleSidebar() {
     this.setState({
       sidebarOpen: !this.state.sidebarOpen
     })
   }
 
-  onFilterChange (filterOptions) {
+  onFilterChange(filterOptions) {
     this.setState({
       filterOptions: filterOptions,
       isLoading: true
     }, () =>
-    Store.loadBugsByFilterOptions(filterOptions)
-    .then(bugs => {
-      if (filterOptions.every(option => this.state.filterOptions.includes(option))) {
-        this.setState({
-          isLoading: false,
-          bugs: bugs
-        })
-      }
-      return bugs
-    }))
+        store.loadBugs(filterOptions)
+          .then(bugs => {
+            if (filterOptions.every(option => this.state.filterOptions.includes(option))) {
+              this.setState({
+                isLoading: false,
+                bugs: bugs
+              })
+            }
+            return bugs
+          }))
   }
 
-  render () {
+  render() {
     const appbarIcon = this.state.isLoading ? 'fa-spinner fa-pulse' : 'fa-bug'
     const sidebarClass = this.state.sidebarDocked ? 'sidebar-docked'
       : this.state.sidebarOpen ? 'sidebar-open' : 'sidebar-closed'
+      
     return (
       <div className={sidebarClass}>
         <div className='appbar'>
@@ -80,11 +86,11 @@ class App extends Component {
         </div>
         <div className='content'>
           {
-              this.state.filterOptions.length === 0 ? <div className='response'>No options selected</div>
+            this.state.filterOptions.length === 0 ? <div className='response'>No options selected</div>
               : this.state.isLoading ? <div className='response'>Loading...</div>
-              : this.state.bugs.length === 0 && !this.state.isLoading ? <div className='response'>No matching bugs</div>
-              : <BugContainer bugs={this.state.bugs} />
-            }
+                : this.state.bugs.length === 0 && !this.state.isLoading ? <div className='response'>No matching bugs</div>
+                  : <BugContainer bugs={this.state.bugs} />
+          }
         </div>
       </div>
     )
