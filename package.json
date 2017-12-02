@@ -14,20 +14,22 @@
   "license": "MIT",
   "scripts": {
     "build": "npm run clean-dist && webpack -p --config=webpack/prod.js",
+    "deploy": "gh-pages -d dist",
     "clean-dist": "rm -f -r -d dist",
     "lint": "npm run lint:ts && npm run lint:sass",
     "lint:ts": "tslint './src/**/*.ts*' --format stylish --force",
     "start": "npm run start-dev",
     "start-dev": "webpack-dev-server --config=webpack/dev.js",
-    "start-prod": "npm run build",
-    "deploy": "gh-pages -d build"
+    "start-prod": "npm run build"
   },
   "devDependencies": {
     "@types/node": "^8.0.53",
+    "@types/react": "^16.0.25",
     "awesome-typescript-loader": "^3.4.0",
     "css-loader": "^0.28.7",
     "express": "^4.16.2",
     "file-loader": "^1.1.5",
+    "gh-pages": "^1.1.0",
     "html-webpack-plugin": "^2.30.1",
     "image-webpack-loader": "^3.4.2",
     "node-sass": "^4.7.2",
@@ -47,8 +49,7 @@
     "webpack": "^3.8.1",
     "webpack-dev-middleware": "^1.12.2",
     "webpack-dev-server": "^2.9.5",
-    "webpack-merge": "^4.1.1",
-    "@types/react": "^16.0.25"
+    "webpack-merge": "^4.1.1"
   },
   "dependencies": {
     "antd": "^2.13.10",

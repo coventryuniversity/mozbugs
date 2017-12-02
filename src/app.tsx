@@ -1,7 +1,7 @@
 import * as React from 'react';
 import { FilterContainer } from './components/Filter';
 import { BugContainer } from './components/Bugs/BugContainer';
-import { store } from './services/Store';
+import { store } from './services/store';
 import { FilterOptions } from './constants';
 import { Button } from 'antd';
 

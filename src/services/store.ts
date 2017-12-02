@@ -2,7 +2,7 @@ import { intersectionBy } from 'lodash';
 
 import bz from 'bzrest';
 
-import { FilterOptions, requestDefaults } from './constants';
+import { FilterOptions, requestDefaults } from '../constants';
 import { log } from 'util';
 
 /** Bug store */

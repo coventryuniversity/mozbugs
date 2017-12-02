@@ -4,7 +4,7 @@ import { FilterGroups } from '../constants'
 import { Menu } from 'antd';
 import { Checkbox } from 'antd';
 
-import store from '../Store'
+import store from '../services/store'
 
 export class FilterContainer extends React.Component<any, any> {
   constructor(props) {
