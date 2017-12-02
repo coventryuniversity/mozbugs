@@ -16,9 +16,12 @@ class Store {
   async loadBugs(filterOptions) {
     let bugs = await Promise.all(filterOptions.map(async key => {
       // if bugs are already retrieved
-      if (this.bugs[key]) { return this.bugs[key] }
+      if (this.bugs[key]) {
+        return this.bugs[key]
+      }
+      
       // else, get the bugs
-      this.bugs[key] = await this.getbugs(FilterOptions[key])
+      this.bugs[key] = this.getbugs(FilterOptions[key])
       return this.bugs[key]
     }))
 
