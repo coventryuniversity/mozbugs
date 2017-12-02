@@ -37,8 +37,9 @@ $ npm start
 
 mozbugs uses a number of open source projects to work properly:
 
-* [React] - JavaScript library providing a view for data rendered as HTML
+* [Typescript] - TypeScript is a superset of JavaScript that compiles to clean JavaScript output
 * [Ant Design] - An enterprise class UI design language and React-based implementation
+* [React] - JavaScript library providing a view for data rendered as HTML
 
 ## Todo
 
