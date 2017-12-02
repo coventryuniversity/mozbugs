@@ -6,7 +6,6 @@ import { FilterOptions } from './constants';
 import { Button } from 'antd';
 
 import 'antd/dist/antd.css';
-
 import './css/index.scss';
 
 type AppProps = {
