@@ -1,7 +1,10 @@
 import * as React from 'react';
-import { FilterContainer } from './components/Filter';
-import { BugContainer } from './components/Bugs/BugContainer';
+import { FilterComponent } from './components/filter.component';
+import { BugListComponent } from './components/bugs/bugList.component';
+import { PinnedComponent } from './components/bugs/pinned.component';
+import { Bug } from './components/bugs/bug.component';
 import { store } from './services/store';
+import * as lstore from 'store';
 import { FilterOptions } from './constants';
 import { Button } from 'antd';
 
@@ -13,6 +16,7 @@ type AppProps = {
 }
 type AppState = {
   sidebarOpen: true
+  bugs: Array<Bug>
 }
 
 export class App extends React.Component<any, any> {
@@ -26,7 +30,8 @@ export class App extends React.Component<any, any> {
       sidebarDocked: false,
       filterOptions: [],
       isLoading: false,
-      bugs: []
+      bugs: [],
+      pinnedBugs: lstore.get('pinned') || []
     }
 
     this.toggleSidebar = this.toggleSidebar.bind(this)
@@ -42,7 +47,7 @@ export class App extends React.Component<any, any> {
 
   componentDidMount() {
     // NOTE: This will trigger all Bugs to be loaded let's test this
-    store.loadBugs(Object.keys(FilterOptions))
+    store.loadBugs(Object.keys(FilterOptions));
   }
 
   componentWillUnmount() {
@@ -76,8 +81,41 @@ export class App extends React.Component<any, any> {
             }
             return bugs
           }))
+  }
 
+  pinSwitch(bug: Bug) {
+    let pinned: Array<Bug> = lstore.get('pinned');
+    if (!pinned) { pinned = [] }; // incase no pinned bugs stored locally yet
 
+    bug.pinned = !bug.pinned;
+
+    if (bug.pinned) { // if now pinned
+      pinned.push(bug); // add bug
+
+      this.setState({
+        pinnedBugs: pinned
+      })
+
+    } else {
+      pinned = pinned.filter((buga) => { return buga.id != bug.id; }); // remove bug
+
+      // get current list of bugs
+      let bugs = this.state.bugs;
+
+      // if bug is in the current search list, we need to mark it as not pinned
+      if (bugs[bugs.findIndex(buga => { return buga.id === bug.id })] > -1) {
+        bugs[bugs.findIndex(buga => { return buga.id === bug.id })].pinned = false;
+      }
+
+      // update bugs and pinned bugs
+      this.setState({
+        pinnedBugs: pinned,
+        bugs: bugs
+      })
+    }
+
+    // updated local storage
+    lstore.set('pinned', pinned); // set store
   }
 
   render() {
@@ -93,14 +131,15 @@ export class App extends React.Component<any, any> {
           <span className='appbar-title'>Moz Bugs</span>
         </div>
         <div className='sidebar'>
-          <FilterContainer onChange={this.onFilterChange} />
+          <FilterComponent onChange={this.onFilterChange} />
         </div>
         <div className='content'>
+          <PinnedComponent bugs={this.state.pinnedBugs} handlePins={this.pinSwitch.bind(this)} />
           {
             this.state.filterOptions.length === 0 ? <div className='response'>No options selected</div>
               : this.state.isLoading ? <div className='response'>Loading...</div>
                 : this.state.bugs.length === 0 && !this.state.isLoading ? <div className='response'>No matching bugs</div>
-                  : <BugContainer bugs={this.state.bugs} />
+                  : <BugListComponent bugs={this.state.bugs} pinnedBugs={this.state.pinnedBugs} handlePins={this.pinSwitch.bind(this)} />
           }
         </div>
       </div>

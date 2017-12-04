@@ -6,7 +6,7 @@ import { Checkbox } from 'antd';
 
 import store from '../services/store'
 
-export class FilterContainer extends React.Component<any, any> {
+export class FilterComponent extends React.Component<any, any> {
   constructor(props) {
     super(props)
     this.state = {

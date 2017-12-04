@@ -2,7 +2,7 @@ import * as React from 'react';
 
 export const requestDefaults = {
     status: ['NEW', 'ASSIGNED', 'REOPENED', 'UNCONFIRMED'],
-    include_fields: ['id', 'assigned_to', 'summary', 'last_change_time', 'component', 'whiteboard', 'status', 'severity'],
+    include_fields: ['id', 'assigned_to', 'summary', 'last_change_time', 'component', 'whiteboard', 'status', 'severity', 'description'],
   
     // not sure
     whiteboard_type: 'contains_all',

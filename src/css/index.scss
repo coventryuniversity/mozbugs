@@ -19,6 +19,12 @@ body, html {
   color: var(--moz-charcole);
 }
 
+.pinned {
+  color: #108ee9;
+  border-color: #108ee9;
+  border-width: 1px;
+}
+
 .appbar {
   background-color: white;
   box-shadow: 0 1px 3px rgba(0, 0, 0,.06), 0 1px 2px rgba(0, 0, 0, .06);
