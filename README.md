@@ -43,7 +43,6 @@ mozbugs uses a number of open source projects to work properly:
 
 ## Todo
 
- - Pinning bugs
  - Add Code Comments
  - Write tests
 
