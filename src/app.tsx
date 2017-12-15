@@ -13,17 +13,17 @@ import './css/index.scss';
 
 type AppProps = {
   sidebarOpen: true
-}
+};
 type AppState = {
   sidebarOpen: true
   bugs: Array<Bug>
-}
+};
 
 export class App extends React.Component<any, any> {
   state: any;
 
   constructor(props, state) {
-    super(props)
+    super(props);
 
     this.state = {
       sidebarOpen: false,
@@ -32,17 +32,17 @@ export class App extends React.Component<any, any> {
       isLoading: false,
       bugs: [],
       pinnedBugs: lstore.get('pinned') || []
-    }
+    };
 
-    this.toggleSidebar = this.toggleSidebar.bind(this)
-    this.onFilterChange = this.onFilterChange.bind(this)
+    this.toggleSidebar = this.toggleSidebar.bind(this);
+    this.onFilterChange = this.onFilterChange.bind(this);
   }
 
   componentWillMount() {
 
-    var mql = window.matchMedia(`(min-width: 800px)`)
-    mql.addListener(this.mediaQueryChanged.bind(this))
-    this.setState({ mql: mql, sidebarDocked: mql.matches })
+    let mql = window.matchMedia(`(min-width: 800px)`);
+    mql.addListener(this.mediaQueryChanged.bind(this));
+    this.setState({ mql: mql, sidebarDocked: mql.matches });
   }
 
   componentDidMount() {
@@ -51,19 +51,19 @@ export class App extends React.Component<any, any> {
   }
 
   componentWillUnmount() {
-    this.state.mql.removeListener(this.mediaQueryChanged)
+    this.state.mql.removeListener(this.mediaQueryChanged);
   }
 
   mediaQueryChanged() {
     this.setState({
       sidebarDocked: this.state.mql.matches
-    })
+    });
   }
 
   toggleSidebar() {
     this.setState({
       sidebarOpen: !this.state.sidebarOpen
-    })
+    });
   }
 
   onFilterChange(filterOptions) {
@@ -77,15 +77,15 @@ export class App extends React.Component<any, any> {
               this.setState({
                 isLoading: false,
                 bugs: bugs
-              })
+              });
             }
-            return bugs
-          }))
+            return bugs;
+          }));
   }
 
   pinSwitch(bug: Bug) {
     let pinned: Array<Bug> = lstore.get('pinned');
-    if (!pinned) { pinned = [] }; // incase no pinned bugs stored locally yet
+    if (!pinned) { pinned = []; } // incase no pinned bugs stored locally yet
 
     bug.pinned = !bug.pinned;
 
@@ -94,24 +94,24 @@ export class App extends React.Component<any, any> {
 
       this.setState({
         pinnedBugs: pinned
-      })
+      });
 
     } else {
-      pinned = pinned.filter((buga) => { return buga.id != bug.id; }); // remove bug
+      pinned = pinned.filter((buga) => { return buga.id !== bug.id; }); // remove bug
 
       // get current list of bugs
       let bugs = this.state.bugs;
 
       // if bug is in the current search list, we need to mark it as not pinned
-      if (bugs[bugs.findIndex(buga => { return buga.id === bug.id })] > -1) {
-        bugs[bugs.findIndex(buga => { return buga.id === bug.id })].pinned = false;
+      if (bugs[bugs.findIndex(buga => { return buga.id === bug.id; })] > -1) {
+        bugs[bugs.findIndex(buga => { return buga.id === bug.id; })].pinned = false;
       }
 
       // update bugs and pinned bugs
       this.setState({
         pinnedBugs: pinned,
         bugs: bugs
-      })
+      });
     }
 
     // updated local storage
@@ -119,9 +119,9 @@ export class App extends React.Component<any, any> {
   }
 
   render() {
-    const appbarIcon = this.state.isLoading ? 'fa-spinner fa-pulse' : 'fa-bug'
+    const appbarIcon = this.state.isLoading ? 'fa-spinner fa-pulse' : 'fa-bug';
     const sidebarClass = this.state.sidebarDocked ? 'sidebar-docked'
-      : this.state.sidebarOpen ? 'sidebar-open' : 'sidebar-closed'
+      : this.state.sidebarOpen ? 'sidebar-open' : 'sidebar-closed';
 
     return (
       <div className={sidebarClass}>
@@ -143,6 +143,6 @@ export class App extends React.Component<any, any> {
           }
         </div>
       </div>
-    )
+    );
   }
 }
