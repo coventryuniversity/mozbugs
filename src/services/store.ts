@@ -14,9 +14,9 @@ class Store {
       if (this.bugs[key]) return this.bugs[key];
 
       // else, get the bugs
-      this.bugs[key] = [].concat(... await Promise.all(FilterOptions[key].map(query => this.request(query))))
+      this.bugs[key] = [].concat(... await Promise.all(FilterOptions[key].map(query => this.request(query))));
       return this.bugs[key];
-    }))
+    }));
 
     return intersectionBy(...bugs, 'id');
   }

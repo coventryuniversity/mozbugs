@@ -1,31 +1,31 @@
-import * as React from 'react'
-import PropTypes from 'prop-types'
-import { FilterGroups } from '../constants'
+import * as React from 'react';
+import PropTypes from 'prop-types';
+import { FilterGroups } from '../constants';
 import { Menu } from 'antd';
 import { Checkbox } from 'antd';
 
-import store from '../services/store'
+import store from '../services/store';
 
 export class FilterComponent extends React.Component<any, any> {
   constructor(props) {
-    super(props)
+    super(props);
     this.state = {
       checkedOptions: []
-    }
-    this.onChange = this.onChange.bind(this)
+    };
+    this.onChange = this.onChange.bind(this);
   }
 
   onChange(event) {
-    let checkedOptions = this.state.checkedOptions
-    const { value, checked } = event.target
+    let checkedOptions = this.state.checkedOptions;
+    const { value, checked } = event.target;
     if (checked) {
-      checkedOptions = checkedOptions.concat([value])
+      checkedOptions = checkedOptions.concat([value]);
     } else {
-      checkedOptions = checkedOptions.filter(oldValue => oldValue !== value)
+      checkedOptions = checkedOptions.filter(oldValue => oldValue !== value);
     }
     this.setState({
       checkedOptions: checkedOptions
-    }, () => this.props.onChange(this.state.checkedOptions))
+    }, () => this.props.onChange(this.state.checkedOptions));
   }
 
   render() {
@@ -43,6 +43,6 @@ export class FilterComponent extends React.Component<any, any> {
           </Menu.SubMenu>
         ))}
       </Menu>
-    )
+    );
   }
 }

@@ -1,5 +1,5 @@
-import * as React from 'react'
-import PropTypes from 'prop-types'
+import * as React from 'react';
+import PropTypes from 'prop-types';
 import { BugComponent, Bug } from './bug.component';
 
 import { Collapse } from 'antd';
@@ -10,7 +10,7 @@ import * as store from 'store';
 export class PinnedComponent extends React.Component<any, any> {
 
     constructor(props) {
-        super(props)
+        super(props);
     }
 
 
@@ -19,6 +19,6 @@ export class PinnedComponent extends React.Component<any, any> {
             <div className='bug-container'>
                 {this.props.bugs.map(bug => <BugComponent bug={bug} handlePins={this.props.handlePins} pinned={true} key={bug.id} />)}
             </div>
-        )
+        );
     }
 }

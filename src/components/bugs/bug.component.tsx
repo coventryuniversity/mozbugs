@@ -21,23 +21,23 @@ type BugProps = {
   bug: Bug
   pinned?: boolean
   handlePins: Function
-}
+};
 
 
 export class BugComponent extends React.Component<BugProps, any> {
 
   constructor(props) {
-    super(props)
+    super(props);
     this.props.bug.pinned = this.props.pinned;
   }
 
   async pinSwitch(event) {
-    event.preventDefault(); // stop <a> tag from activating on button click 
+    event.preventDefault(); // stop <a> tag from activating on button click
     this.props.handlePins(this.props.bug);
   }
 
   /**
-   * 
+   *
    * @param id - id number for a bugzilla bug
    */
   buildBugzillaLink(id: number) {
@@ -45,14 +45,14 @@ export class BugComponent extends React.Component<BugProps, any> {
   }
 
   render() {
-    const { bug } = this.props
-    const pinClass = css({ 'pinned': this.props.pinned })
+    const { bug } = this.props;
+    const pinClass = css({ 'pinned': this.props.pinned });
 
-    const pin = <Button className={pinClass} type="ghost" icon="pushpin-o" onClick={this.pinSwitch.bind(this)} />
+    const pin = <Button className={pinClass} type='ghost' icon='pushpin-o' onClick={this.pinSwitch.bind(this)} />;
     const statusColor = bug.status === 'NEW' ? '#8BC34A'
       : bug.status === 'ASSIGNED' ? '#C13832'
         : bug.status === 'REOPENED' ? '#FF9800'
-          : bug.status === 'UNCONFIRMED' ? '#03A9F4' : undefined
+          : bug.status === 'UNCONFIRMED' ? '#03A9F4' : undefined;
 
     return (
       <a className='bug' href={this.buildBugzillaLink(bug.id)} target='_blank' rel='noopener noreferrer' >
@@ -62,6 +62,6 @@ export class BugComponent extends React.Component<BugProps, any> {
           </Tag>
         </Card>
       </a >
-    )
+    );
   }
 }
