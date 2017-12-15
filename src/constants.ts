@@ -1,13 +1,11 @@
-import * as React from 'react';
-
 export const requestDefaults = {
     status: ['NEW', 'ASSIGNED', 'REOPENED', 'UNCONFIRMED'],
     include_fields: ['id', 'assigned_to', 'summary', 'last_change_time', 'component', 'whiteboard', 'status', 'severity', 'description'],
 
-    // not sure
+    // not sure what this is
     whiteboard_type: 'contains_all',
 
-    // These are related to a has mentor check? needed?
+    // Are these  related to a "has mentor" check? needed?
     f1: 'bug_mentor',
     o1: 'isnotempty'
   };
