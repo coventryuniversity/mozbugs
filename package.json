@@ -16,15 +16,15 @@
     "build": "npm run clean-dist && webpack -p --config=webpack/prod.js",
     "deploy": "npm run build && gh-pages -d dist",
     "clean-dist": "rm -f -r -d dist",
-    "lint": "npm run lint:ts && npm run lint:sass",
-    "lint:ts": "tslint './src/**/*.ts*' --format stylish --force",
+    "lint": "npm run lint:ts",
+    "lint:ts": "tslint './src/**/*.ts*' --fix --format stylish --force",
     "start": "npm run start-dev",
-    "start-dev": "webpack-dev-server --open --config=webpack/dev.js",
-    "start-prod": "npm run build"
+    "start-dev": "webpack-dev-server --open --config=webpack/dev.js"
   },
   "devDependencies": {
     "@types/node": "^8.0.53",
     "@types/react": "^16.0.25",
+    "@types/storejs": "^2.0.0",
     "awesome-typescript-loader": "^3.4.0",
     "css-loader": "^0.28.7",
     "express": "^4.16.2",
@@ -54,7 +54,10 @@
   "dependencies": {
     "antd": "^2.13.10",
     "bzrest": "^1.0.4-alpha",
-    "lodash": "^4.17.4"
+    "classnames": "^2.2.5",
+    "lodash": "^4.17.4",
+    "npm": "^5.5.1",
+    "store": "^2.0.12"
   },
   "postcss": {}
 }

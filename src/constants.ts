@@ -1,17 +1,15 @@
-import * as React from 'react';
-
 export const requestDefaults = {
     status: ['NEW', 'ASSIGNED', 'REOPENED', 'UNCONFIRMED'],
-    include_fields: ['id', 'assigned_to', 'summary', 'last_change_time', 'component', 'whiteboard', 'status', 'severity'],
-  
-    // not sure
+    include_fields: ['id', 'assigned_to', 'summary', 'last_change_time', 'component', 'whiteboard', 'status', 'severity', 'description'],
+
+    // not sure what this is
     whiteboard_type: 'contains_all',
-  
-    // These are related to a has mentor check? needed?
+
+    // Are these  related to a "has mentor" check? needed?
     f1: 'bug_mentor',
     o1: 'isnotempty'
-  }
-  
+  };
+
   export const FilterGroups = [
     {
       label: 'Display only',
@@ -193,8 +191,8 @@ export const requestDefaults = {
         }
       ]
     }
-  ]
-  
+  ];
+
   export const FilterOptions = {
     createdLast30: [
       {
@@ -540,9 +538,9 @@ export const requestDefaults = {
           'JavaScript Engine', 'JavaScript Engine: JIT',
           /*eslint-disable */
           // NOTE: We ignore http://eslint.org/docs/rules/no-script-url here
-          "JavaScript: GC",
-          "JavaScript: Internationalization API",
-          "JavaScript: Standard Library",
+          'JavaScript: GC',
+          'JavaScript: Internationalization API',
+          'JavaScript: Standard Library',
           /*eslint-enable */
           'js-ctypes',
           'XPConnect'
@@ -774,5 +772,4 @@ export const requestDefaults = {
         whiteboard: 'lang=xml'
       }
     ]
-  }
-  
+  };
